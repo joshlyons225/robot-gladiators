@@ -36,7 +36,6 @@ var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 if (enemy.health <= 0) {
     window.alert(enemy.name + " has died!");
     playerInfo.money = playerInfo.money + 20;
-    break;
 }
 else {
     window.alert(enemy.name + " still has " + enemy.health + " health left.");
@@ -50,7 +49,6 @@ var damage = randomNumber(enemy.attack -3, enemy.attack);
 
 if (playerInfo.health <= 0) {
     window.alert(playerInfo.name + " has died!");
-    break;
 }
 else {
     window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
@@ -174,19 +172,16 @@ var randomNumber = function(min, max) {
 
 //shop function
 var shop = function() {
-    var shopOptionPrompt = window.prompt ("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the shop? Please enter 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice.");
-
+    var shopOptionPrompt = window.prompt ("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the shop? Please enter 1 for REFILL, 2 for UPGRADE, or 3 to LEAVE.");
+shopOptionPrompt = parseInt(shopOptionPrompt);
 switch (shopOptionPrompt) {
-    case "REFILL":
-    case "refill":
+    case 1:
         playerInfo.refillHealth();
         break;
-    case "UPGRADE":
-    case "upgrade":
+    case 2:
         playerInfo.upgradeAttack();
         break;
-    case "LEAVE":
-    case "leave":
+    case 3:
         window.alert("Leaving the store.");
         break;
     default:
